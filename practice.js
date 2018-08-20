@@ -50,7 +50,9 @@ first(names, function(firstName){
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-//Code Here
+let last = (arr, cb) => {
+cb(arr[arr.length-1])
+}
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -68,7 +70,9 @@ last(names, function(lastName){
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-//Code Here
+let multiply = (num1,num2,cb) => {
+cb(num1 * num2)
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -87,7 +91,15 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//Code Here 
+let contains = (arr,name,cb) =>{
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] === name){
+      cb(true)
+    } else {
+      cb(false)
+    }
+  }
+}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -108,7 +120,12 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
+let uniq = (arr,cb) => {
+let newArr = arr.filter(function(item,position){
+  return arr.indexOf(item) == position;
+});
+cb(newArr)
+}
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -124,8 +141,12 @@ uniq(names, function(uniqArr){
   Write a function called each that takes in an array of names and a callback function. 
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
+let each = (arr,cb) =>{
+  for(var i = 0; i < arr.length; i++){
+    cb(arr[i], i)
+  }
+}
 
-//Code Here 
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -142,7 +163,13 @@ each(names, function(item, indice){
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
 
-// Code here
+function getUserById (users,id, cb) {
+  for(let i = 0; i < users.length; i++){
+    if (users[i].id === id){
+      return cb(users[i])
+    }
+  }
+}
 
 // Do not edit the code below.
 var users = [
